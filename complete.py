@@ -13,8 +13,8 @@ def do_complete(system_prompts: List[str], user_prompts: List[str]) -> str:
 
     print({'sys': system_prompts, 'usr': user_prompts}) # debug
     messages = [
-        *(map(lambda p: SystemMessage(p), system_prompts)),
-        *(map(lambda p: HumanMessage(p), user_prompts))
+        *(map(SystemMessage, system_prompts)),
+        *(map(HumanMessage, user_prompts))
     ]
 
     print(messages) # debug
