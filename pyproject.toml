@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "ai-hub"
+version = "0.1.0"
+description = ""
+authors = ["Ai Dj <aidjonthedancefloor@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+langchain = {extras = ["openai"], version = "^0.3.27"}
+dotenv = "^0.9.9"
+flask = "^3.1.2"
+langchain-community = "^0.3.30"
+langchain-openai = "^0.3.35"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
