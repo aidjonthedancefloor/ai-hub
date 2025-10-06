@@ -1,14 +1,12 @@
 from flask import Flask, request, jsonify
-import json
-import os
 from util import json_entry_to_str_list
-from complete import do_complete
+from complete import complete
 import dotenv
 
 app = Flask(__name__)
 
 @app.route('/complete', methods=['POST'])
-def complete():
+def _complete():
     """
     POST /complete
 
@@ -40,7 +38,7 @@ def complete():
         return jsonify({"error": "Invalid JSON body"}), 400
 
     try:
-        response = do_complete(system_prompts, user_prompts)
+        response = complete(system_prompts, user_prompts)
     except RuntimeError as e:
         return jsonify({"error": str(e)}), 500
     except Exception as e:

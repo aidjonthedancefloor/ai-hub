@@ -6,7 +6,7 @@ from typing import List
 from util import assert_openapi_key_set
 from llm_factory import create_chat_model
 
-def do_complete(system_prompts: List[str], user_prompts: List[str]) -> str:
+def complete(system_prompts: List[str], user_prompts: List[str]) -> str:
     assert_openapi_key_set()
 
     chat = create_chat_model()
