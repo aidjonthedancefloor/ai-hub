@@ -1,11 +1,13 @@
+from typing import List
 from langchain.schema import (
     SystemMessage,
     HumanMessage,
 )
-from typing import List
-from llm_factory import create_chat_model
+from llm.llm_factory import create_chat_model
 
-def complete(system_prompts: List[str], user_prompts: List[str]) -> str:
+def ad_hoc_complete(system_prompts: List[str], user_prompts: List[str]) -> str:
+    """Single-shot completion with system and user prompts."""
+
     chat = create_chat_model()
 
     print({'sys': system_prompts, 'usr': user_prompts}) # debug
