@@ -8,4 +8,5 @@ def create_chat_model() -> BaseChatModel:
     return ChatOpenAI(model="gpt-4o", temperature=0.7)
 
 def create_llm() -> BaseLLM:
+    # `BaseLLM` is like single-shot, dumbed-down `BaseChatModel`
     return OpenAI(model="gpt-4o", temperature=0.7)

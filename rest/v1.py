@@ -1,6 +1,6 @@
 """/v1/* REST API endpoints."""
 
-from flask import request, jsonify, Blueprint
+from flask import Response, request, jsonify, Blueprint
 from util.json_util import obj_to_json_str_list
 from completion.ad_hoc import ad_hoc_complete
 
@@ -39,10 +39,10 @@ def _complete():
         return jsonify({"error": "Invalid JSON body"}), 400
 
     try:
-        response = ad_hoc_complete(system_prompts, user_prompts)
+        response_stream = ad_hoc_complete(system_prompts, user_prompts)
     except RuntimeError as e:
         return jsonify({"error": str(e)}), 500
     except Exception as e:
         return jsonify({"error": f"Processing failed: {e}"}), 500
-
-    return jsonify({"response": response})
+    
+    return Response(response_stream, content_type='text/plain')
